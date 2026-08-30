@@ -142,16 +142,17 @@ footer {
     color: rgba(255, 255, 255, 0.75);
 }
 
-footer p {
+footer p a {
+    color: white;
     position: relative;
     transition: color 0.15s;
 }
 
-footer p:hover {
+footer p a:hover {
     color: rgba(96, 165, 250, 0.8);
 }
 
-footer p::after {
+footer p a::after {
     content: "";
     display: inline-block;
     width: 50px;
@@ -164,7 +165,7 @@ footer p::after {
     transition: width 0.15s, background-color 0.15s;
 }
 
-footer p:hover::after{
+footer p a:hover::after{
     background-color: rgba(96, 165, 250, 0.8);
     width: 60px;
 }
