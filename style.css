@@ -1,5 +1,5 @@
 @property --gradient-num {
-    syntax: "<integer>";
+    syntax: "<number>";
     inherits: false;
     initial-value: 0;
 }
@@ -21,9 +21,7 @@ body {
     height: 100vh;
     margin: 0;
 }
-
 a {
-    color: white;
     text-decoration: none;
 }
 #background {
@@ -179,32 +177,39 @@ footer p:hover::after{
     position: relative;
     width: 20vw;
     height: auto;
-    filter: blur(20px);
+    filter: blur(5px);
+}
+#processing-image-container {
+    overflow: hidden;
+    position: relative;
+}
+#file-name {
+    text-align: center;
 }
 
-#processing-image::after {
+#processing-image-container::before {
+    z-index: 1;
     content: "";
-    position: relative;
+    position: absolute;
     height: 100%;
     width: 100%;
     left: 0;
     right: 0;
     background: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.5) calc(var(--gradient-num) * 100%),
-        rgba(255, 255, 255, 0) 100%
+        45deg, 
+        rgba(255, 255, 255, 0) calc((var(--gradient-num) * 100%) - 20%), 
+        rgba(96, 165, 250, 1) calc(var(--gradient-num) * 100%), 
+        rgba(255, 255, 255, 0) calc((var(--gradient-num) * 100%) + 20%)
     );
-    animation: 0.5s ease-in-out 0.2s repeat gradientAnimation;
-
+    animation: 2.5s ease-in-out 0.2s infinite gradientAnimation;
 }
 
 @keyframes gradientAnimation {
     0% {
-        --gradient-num: 0;
+        --gradient-num: -0.3; /* Pushes the blue core entirely off the bottom-left corner */
     }
     100% {
-        --gradient-num: 1;
+        --gradient-num: 1.3;  /* Pulls the blue core entirely past the top-right corner */
     }
 }
 

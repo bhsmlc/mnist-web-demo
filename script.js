@@ -32,6 +32,7 @@ async function testPredict() {
 }
 function listenForImageUpload() {
     const inputTag = document.getElementById("camera-input");
+    const loadingImage = document.getElementById("processing-image");
     const inputPhase = document.getElementById("input-phase");
     const processingPhase = document.getElementById("processing-phase");
     const outputPhase = document.getElementById("output-phase");
@@ -41,6 +42,8 @@ function listenForImageUpload() {
             console.log("File selected:", file);
             inputPhase.style.display = "none";
             processingPhase.style.display = "block";
+            loadingImage.src = URL.createObjectURL(file);
+            document.getElementById("file-name").innerText = file.name;
         }
     });
 }
