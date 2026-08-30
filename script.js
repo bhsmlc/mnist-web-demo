@@ -41,7 +41,6 @@ function listenForImageUpload() {
             console.log("File selected:", file);
             inputPhase.style.display = "none";
             processingPhase.style.display = "block";
-            document.body.innerText = file.name;
         }
     });
 }
