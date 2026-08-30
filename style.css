@@ -2,14 +2,41 @@ body {
     background-color:#0B0F14;
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10vw;
-    flex-direction: row;
     height: 100vh;
     margin: 0;
 }
-
+#background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.03;
+}
+#logo {
+    position: fixed;
+    width: 10vw;
+    height: auto;
+    top: 2%;
+    left: 2%;
+}
+#title {
+    position: relative;
+    top: 10%;
+    font-size: 2.5rem;
+    color: rgba(186, 210, 255, 0.75);
+}
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10vw;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
 .guide-step {
     display: flex;
     align-items: center;
@@ -37,6 +64,10 @@ body {
     line-height: 1.4;
 }
 
+.guide-icon {
+    width: 5vw;
+}
+
 #image-upload {
     width: 30vw;
     aspect-ratio: 1 / 1;
@@ -52,6 +83,7 @@ body {
 #image-upload:hover {
     background-color: rgba(37, 99, 235, 0.18);
     border-color: rgba(96, 165, 250, 0.8);
+    cursor: pointer;
 }
 
 #guide-container {
@@ -61,47 +93,49 @@ body {
     gap: 1vw;
 }
 
-#ya {
-    position: fixed;
+#image, #ya {
+    display: none;
 }
-#image {
+
+footer {
     position: fixed;
+    bottom: 0px;
+    display: flex;
+    padding: 20px 0;
+    width: 100%;
+    justify-content: center;
+    gap: 10vw;  
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+footer p {
+    position: relative;
+    transition: color 0.15s;
+}
+
+footer p:hover {
+    color: rgba(96, 165, 250, 0.8);
+}
+
+footer p::after {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.75);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.15s, background-color 0.15s;
+}
+
+footer p:hover::after{
+    background-color: rgba(96, 165, 250, 0.8);
+    width: 60px;
 }
 
 @media (max-width: 700px) {
-    body {
-        gap: 10vh;
-        flex-direction: column;
-    }
 
-    #image-upload {
-        width: 30vw;
-        aspect-ratio: 1 / 1;
-        background: rgba(37, 99, 235, 0.08);
-        border: 2px solid rgba(59, 130, 246, 0.55);
-        border-radius: 20px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.15s, border-color 0.15s;
-    }
-    #image-upload:hover {
-        background-color: rgba(37, 99, 235, 0.18);
-        border-color: rgba(96, 165, 250, 0.8);
-    }
-
-    #guide-container {
-        width: 25vw; 
-        display: flex; 
-        flex-direction: column; 
-        gap: 1vw;
-    }
-
-    #ya {
-        position: fixed;
-    }
-    #image {
-        position: fixed;
-    }
 }
