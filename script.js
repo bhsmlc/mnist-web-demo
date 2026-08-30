@@ -1,6 +1,8 @@
 function greeting(name) {
     return `hello ${name}`;
 }
+let currentPhase = "input";
+// input -> processing -> output
 document.getElementById("ya").innerText = greeting("world");
 async function testPredict() {
     let imgElement = document.getElementById("image");
@@ -28,6 +30,22 @@ async function testPredict() {
     alert(data);
     document.getElementById("ya").innerText = JSON.stringify(data);
 }
+function listenForImageUpload() {
+    const inputTag = document.getElementById("camera-input");
+    const inputPhase = document.getElementById("input-phase");
+    const processingPhase = document.getElementById("processing-phase");
+    const outputPhase = document.getElementById("output-phase");
+    inputTag.addEventListener("change", (event) => {
+        const file = inputTag.files?.[0];
+        if (file) {
+            console.log("File selected:", file);
+            inputPhase.style.display = "none";
+            processingPhase.style.display = "block";
+            document.body.innerText = file.name;
+        }
+    });
+}
+listenForImageUpload();
 export {};
-// testPredict()
+// testPredict();
 //# sourceMappingURL=script.js.map

@@ -8,6 +8,10 @@ interface ApiResponse {
     "preprocessed-img": string
 }
 
+let currentPhase: string = "input";
+// input -> processing -> output
+
+
 (document.getElementById("ya") as HTMLElement).innerText = greeting("world");
 
 async function testPredict() {
@@ -44,4 +48,19 @@ async function testPredict() {
     alert(data);
     (document.getElementById("ya") as HTMLElement).innerText = JSON.stringify(data);
 }
-// testPredict()
+function listenForImageUpload() {
+    const inputTag: HTMLInputElement = document.getElementById("camera-input") as HTMLInputElement;
+    const inputPhase: HTMLDivElement = document.getElementById("input-phase") as HTMLDivElement;
+    const processingPhase: HTMLDivElement = document.getElementById("processing-phase") as HTMLDivElement;
+    const outputPhase: HTMLDivElement = document.getElementById("output-phase") as HTMLDivElement;
+    inputTag.addEventListener("change", (event: Event) => {
+        const file = inputTag.files?.[0];
+        if (file) {
+            console.log("File selected:", file);
+            inputPhase.style.display = "none";
+            processingPhase.style.display = "block";
+        }
+    });
+}
+listenForImageUpload();
+// testPredict();
