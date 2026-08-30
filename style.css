@@ -14,6 +14,11 @@ body {
     height: 100vh;
     margin: 0;
 }
+
+a {
+    color: white;
+    text-decoration: none;
+}
 #background {
     position: fixed;
     width: 100%;
@@ -109,6 +114,8 @@ body {
 
 footer {
     position: fixed;
+    display: flex;
+    align-items: center;
     bottom: 0px;
     display: flex;
     padding: 20px 0;
