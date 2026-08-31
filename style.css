@@ -239,6 +239,8 @@ footer p a:hover::after{
     flex-basis: 0;
     flex-grow: 1;
     min-width: 0;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
     border: 2px solid rgba(186, 210, 255, 0.75);
 }
 
