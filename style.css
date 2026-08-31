@@ -1,7 +1,7 @@
 @property --gradient-num {
     syntax: "<number>";
     inherits: false;
-    initial-value: 0;
+    initial-value: -0.3;
 }
 
 *, ::after, ::before, ::backdrop, ::file-selector-button {
@@ -203,6 +203,67 @@ footer p a:hover::after{
         rgba(255, 255, 255, 0) calc((var(--gradient-num) * 100%) + 20%)
     );
     animation: 2.5s ease-in-out 0.2s infinite gradientAnimation;
+}
+
+#output-phase {
+    position: fixed;
+    z-index: 2;
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    padding: 0 10px;
+    border: 10px solid rgba(186, 210, 255, 1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#output-image {
+    flex-basis: 0;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+#divider {
+    background-color: rgba(186, 210, 255, 0.75);
+    height: 90%;
+    min-width: 2px;
+    margin: 0 10px;
+}
+
+#output-text {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    flex-basis: 0;
+    flex-grow: 1;
+    color: rgba(186, 210, 255, 0.75);
+    font-size: 1rem;
+    min-width: 0;
+}
+#gap {
+    flex-grow: 1;
+}
+#gap2 {
+    flex-grow: 1;
+}
+#prediction {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: red;
+}
+#score {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: red;
+}
+#info {
+    font-size: 1rem;
 }
 
 @keyframes gradientAnimation {

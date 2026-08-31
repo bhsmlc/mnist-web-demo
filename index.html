@@ -78,9 +78,25 @@
             <div id="processing-image-container">
                 <img id="processing-image" src="test.png">
             </div>
-            <p id="file-name">aaaaaa</p>
+            <p id="file-name"></p>
         </div>
         <div id="output-phase">
+            <img id="output-image" src="test.png">
+            <div id="divider"></div>
+            <div id="output-text">
+                <h2>Here's your prediction...</h2>
+                <div id="gap2"></div>
+                <span id="prediction-span">Prediction: <p id="prediction">9</p></span>
+                <span id="score-span">Confidence: <p id="score">0.97</p></span>
+                <div id="gap"></div>
+                <p id="info">
+The image on the left is the preprocessed version of the image you uploaded. <br><br>
+This image is then fed into a convolutional neural network (CNN) that has been trained on the MNIST dataset.<br><br>
+The CNN outputs a prediction of the digit in the image, along with a confidence score.<br><br>
+Join the BHS Machine Learning Club!
+                </p>
+            </div>
+        </div>
         <p id="ya"></p>
         <img id="image" src="test.png" crossorigin="anonymous"  width="100" height="100">
         
