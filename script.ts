@@ -1,3 +1,5 @@
+alert("testing");
+
 function greeting(name: string): string {
     return `hello ${name}`
 }
@@ -12,7 +14,7 @@ let currentPhase: string = "input";
 // input -> processing -> output
 
 
-(document.getElementById("ya") as HTMLElement).innerText = greeting("world");
+// (document.getElementById("ya") as HTMLElement).innerText = greeting("world");
 
 // async function testPredict() {
     

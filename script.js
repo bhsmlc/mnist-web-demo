@@ -1,9 +1,10 @@
+alert("testing");
 function greeting(name) {
     return `hello ${name}`;
 }
 let currentPhase = "input";
 // input -> processing -> output
-document.getElementById("ya").innerText = greeting("world");
+// (document.getElementById("ya") as HTMLElement).innerText = greeting("world");
 // async function testPredict() {
 //     let imgElement : HTMLImageElement = document.getElementById("image") as HTMLImageElement;
 //     let response : Response = await fetch(imgElement.src);

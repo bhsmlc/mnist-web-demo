@@ -51,7 +51,7 @@ a {
 #title {
     position: relative;
     top: 10%;
-    font-size: 2.5rem;
+    font-size: clamp(1rem, 4vw, 2.5rem);
     color: rgba(186, 210, 255, 0.75);
     text-align: center;
 }
@@ -96,7 +96,7 @@ a {
 }
 
 #image-upload {
-    width: 30vw;
+    width: clamp(200px, 40vw, 450px);
     aspect-ratio: 1 / 1;
     background: rgba(37, 99, 235, 0.08);
     border: 2px solid rgba(59, 130, 246, 0.55);
@@ -308,5 +308,173 @@ footer p a:hover::after{
 }
 
 @media (max-width: 700px) {
+    a {
+        text-decoration: none;
+    }
+    #logo {
+        width: 10vh;
+        left: 50%;
+        top: 4vh;
+        transform: translateX(-50%);
+    }
+    #input-phase {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5vh;
+        width: 100%;
+        height: 100%;
+    }
 
+    #title {
+        transform: translateY(2vh);
+        font-size: clamp(1rem, 2.75vh, 2.5rem);
+    }
+    #main {
+        flex-direction: column;
+        gap: 10vh;
+    }
+
+    #image-upload {
+        width: clamp(150px, 40vh, 450px);
+        aspect-ratio: 1 / 0.75;
+    }
+
+    #guide-container {
+        width: 75vw; 
+        gap: 1vh;
+    }
+
+    #processing-phase {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #processing-image {
+        position: relative;
+        width: 20vw;
+        height: auto;
+        filter: blur(5px);
+    }
+    #processing-image-container {
+        overflow: hidden;
+        position: relative;
+        width: 20vw;
+        height: auto;
+    }
+    #file-name {
+        text-align: center;
+    }
+
+    #processing-image-container::before {
+        z-index: 1;
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+            45deg, 
+            rgba(255, 255, 255, 0) calc((var(--gradient-num) * 100%) - 20%), 
+            rgba(96, 165, 250, 1) calc(var(--gradient-num) * 100%), 
+            rgba(255, 255, 255, 0) calc((var(--gradient-num) * 100%) + 20%)
+        );
+        animation: 2.5s ease-in-out 0.2s infinite gradientAnimation;
+    }
+
+    #output-phase {
+        position: fixed;
+        z-index: 2;
+        top: 5%;
+        left: 5%;
+        right: 5%;
+        bottom: 5%;
+        padding: 0 10px;
+        border: 10px solid rgba(186, 210, 255, 1);
+        border-radius: 20px;
+        /* display: flex; */
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    #output-image {
+        flex-basis: 0;
+        flex-grow: 1;
+        min-width: 0;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+        border: 2px solid rgba(186, 210, 255, 0.75);
+    }
+
+    #divider {
+        background-color: rgba(186, 210, 255, 0.75);
+        height: 90%;
+        min-width: 2px;
+        margin: 0 10px;
+    }
+
+    #output-text {
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        flex-basis: 0;
+        flex-grow: 1;
+        color: rgba(186, 210, 255, 0.75);
+        font-size: 1rem;
+        min-width: 0;
+    }
+    #gap {
+        flex-grow: 1;
+    }
+    #gap2 {
+        flex-grow: 1;
+    }
+    #prediction {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: red;
+    }
+    #score {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: red;
+    }
+    #close-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+    #info {
+        font-size: 1rem;
+    }
+
+    #time-notice {
+        opacity: 0;
+        font-size: 0.8rem;
+        color: rgba(186, 210, 255, 0.5);
+        text-align: center;
+        margin-top: 10px;
+        transition: opacity 1s linear;
+    }
+    #time-notice.show {
+        opacity: 1;
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            --gradient-num: -0.3; /* Pushes the blue core entirely off the bottom-left corner */
+        }
+        100% {
+            --gradient-num: 1.3;  /* Pulls the blue core entirely past the top-right corner */
+        }
+    }
 }
