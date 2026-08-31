@@ -265,7 +265,9 @@ footer p a:hover::after{
 #info {
     font-size: 1rem;
 }
-
+#output-phase {
+    display: none;
+}
 @keyframes gradientAnimation {
     0% {
         --gradient-num: -0.3; /* Pushes the blue core entirely off the bottom-left corner */
