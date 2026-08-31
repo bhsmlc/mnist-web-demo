@@ -124,10 +124,6 @@ a {
     gap: 1vw;
 }
 
-#image, #ya {
-    display: none;
-}
-
 footer {
     position: fixed;
     display: flex;
