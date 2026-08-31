@@ -170,8 +170,19 @@ footer p a:hover::after{
     width: 60px;
 }
 
+.dot {
+    max-width: 10px;
+    max-height: 10px;
+}
+
 #processing-phase, #output-phase {
     display: none;
+}
+
+#processing-phase {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #processing-image {
@@ -183,6 +194,8 @@ footer p a:hover::after{
 #processing-image-container {
     overflow: hidden;
     position: relative;
+    width: 20vw;
+    height: auto;
 }
 #file-name {
     text-align: center;
@@ -215,7 +228,7 @@ footer p a:hover::after{
     padding: 0 10px;
     border: 10px solid rgba(186, 210, 255, 1);
     border-radius: 20px;
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -226,6 +239,7 @@ footer p a:hover::after{
     flex-basis: 0;
     flex-grow: 1;
     min-width: 0;
+    border: 2px solid rgba(186, 210, 255, 0.75);
 }
 
 #divider {
@@ -262,12 +276,30 @@ footer p a:hover::after{
     margin-bottom: 10px;
     color: red;
 }
+#close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
 #info {
     font-size: 1rem;
 }
-#output-phase {
-    display: none;
+
+#time-notice {
+    opacity: 0;
+    font-size: 0.8rem;
+    color: rgba(186, 210, 255, 0.5);
+    text-align: center;
+    margin-top: 10px;
+    transition: opacity 1s linear;
 }
+#time-notice.show {
+    opacity: 1;
+}
+
 @keyframes gradientAnimation {
     0% {
         --gradient-num: -0.3; /* Pushes the blue core entirely off the bottom-left corner */
