@@ -80,7 +80,7 @@ async function listenForImageUpload() {
             console.log(data);
             (document.getElementById("output-image") as HTMLImageElement).src = "data:image/jpeg;base64," + data["preprocessed-img"];
             (document.getElementById("prediction") as HTMLElement).innerText = `${parseInt(data.prediction) == -1 ? "DIGIT IS UNCLEAR" : data.prediction}`;
-            (document.getElementById("score") as HTMLElement).innerText = `${parseInt(data.confidence) == -1 ? "DIGIT IS UNCLEAR" : parseFloat(data.confidence) * 100 + "%"}`;
+            (document.getElementById("score") as HTMLElement).innerText = `${parseInt(data.confidence) == -1 ? "DIGIT IS UNCLEAR" : Math.round(parseFloat(data.confidence) * 10000) / 100 + "%"}`;
             let confidenceFloat: number = Math.min(1, Math.max(0, parseFloat(data.confidence)));
             let red: number = 255 - confidenceFloat * 255;
             let green: number = confidenceFloat * 255;
