@@ -2,7 +2,13 @@
 
 ## Overview
 
-Created by Ash-ioL.
+Created by Ash-ioL :)
+
+### Backend Repository
+
+https://github.com/bhsmlc/mnist-api
+
+Proudly hosted on Render :D
 
 ### AI Usage Declaration
 
