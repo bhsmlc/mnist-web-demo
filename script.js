@@ -106,6 +106,7 @@ function allowDrop() {
         }
     });
 }
+allowDrop();
 listenForOutputClose();
 listenForImageUpload();
 export {};
