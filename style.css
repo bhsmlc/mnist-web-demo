@@ -20,6 +20,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 a {
     text-decoration: none;
@@ -183,14 +184,16 @@ footer p a:hover::after{
 
 #processing-image {
     position: relative;
-    width: 20vw;
+    width: 50vw;
+    max-height: 50vh;
     height: auto;
     filter: blur(5px);
 }
 #processing-image-container {
     overflow: hidden;
     position: relative;
-    width: 20vw;
+    width: 50vw;
+    max-height: 50vh;
     height: auto;
 }
 #file-name {
@@ -328,17 +331,16 @@ footer p a:hover::after{
     }
 
     #title {
-        transform: translateY(2vh);
         font-size: clamp(1rem, 2.75vh, 2.5rem);
     }
     #main {
         flex-direction: column;
-        gap: 10vh;
+        gap: 3vh;
     }
 
     #image-upload {
-        width: clamp(150px, 40vh, 450px);
-        aspect-ratio: 1 / 0.75;
+        width: clamp(150px, 80vw, 450px);
+        height: clamp(150px, 30vh, 450px);
     }
 
     #guide-container {
@@ -346,103 +348,78 @@ footer p a:hover::after{
         gap: 1vh;
     }
 
+    footer {
+        gap: 3.5vw;  
+        font-size: clamp(0.5rem, 5vw, 1rem);
+    }
+
+    footer p a::after {
+        width: clamp(20px, 15vw, 50px);
+    }
+
+    footer p a:hover::after{
+        background-color: rgba(96, 165, 250, 0.8);
+        width: clamp(25px, 20vw, 60px);
+    }
+
+    .dot {
+        max-width: clamp(5px, 2vw, 10px);
+    }
+
+    .guide-title {
+        font-size: clamp(7px, 5vw, 11px);
+    }
+
+    .guide-step-desc {
+        font-size: clamp(9px, 5vw, 13px);
+        line-height: 1.05;
+    }
+
     #processing-image {
-        width: 20vh;
+        width: 70vw;
     }
     #processing-image-container {
-        width: 20vh;
+        width: 70vw;
     }
 
     #output-phase {
-        position: fixed;
-        z-index: 2;
-        top: 5%;
-        left: 5%;
-        right: 5%;
-        bottom: 5%;
-        padding: 0 10px;
-        border: 10px solid rgba(186, 210, 255, 1);
-        border-radius: 20px;
-        /* display: flex; */
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    #output-image {
-        flex-basis: 0;
-        flex-grow: 1;
-        min-width: 0;
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
-        border: 2px solid rgba(186, 210, 255, 0.75);
+        padding: 0 5px;
+        border: 8px solid rgba(186, 210, 255, 1);
+        border-radius: 15px;
+        flex-direction: column;
     }
 
     #divider {
-        background-color: rgba(186, 210, 255, 0.75);
-        height: 90%;
-        min-width: 2px;
-        margin: 0 10px;
-    }
-
-    #output-text {
-        display: flex;
-        flex-direction: column;
-        height: 90%;
-        flex-basis: 0;
-        flex-grow: 1;
-        color: rgba(186, 210, 255, 0.75);
-        font-size: 1rem;
-        min-width: 0;
-    }
-    #gap {
-        flex-grow: 1;
-    }
-    #gap2 {
-        flex-grow: 1;
+        width: 90%;
+        height: auto;
+        min-height: 2px;
+        min-width: auto;
+        margin: 10px 0;
     }
     #prediction {
-        font-size: 3rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: red;
+        margin-bottom: 5px;
     }
     #score {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        color: red;
+        margin-bottom: 5px;
     }
     #close-icon {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
+        top: 5px;
+        right: 5px;
+        width: 40px;
+        height: 40px;
     }
     #info {
-        font-size: 1rem;
+        font-size: 0.7rem;
+        line-height: 1;
+        padding-bottom: 5px;
     }
 
     #time-notice {
-        opacity: 0;
-        font-size: 0.8rem;
-        color: rgba(186, 210, 255, 0.5);
-        text-align: center;
-        margin-top: 10px;
-        transition: opacity 1s linear;
-    }
-    #time-notice.show {
-        opacity: 1;
+        font-size: clamp(0.6rem, 3.5vw, 0.8rem);
+        margin-top: 5px;
     }
 
-    @keyframes gradientAnimation {
-        0% {
-            --gradient-num: -0.3; /* Pushes the blue core entirely off the bottom-left corner */
-        }
-        100% {
-            --gradient-num: 1.3;  /* Pulls the blue core entirely past the top-right corner */
-        }
+    #file-name {
+        font-size: clamp(0.8rem, 3.5vw, 1rem);
     }
 }
