@@ -50,10 +50,20 @@ async function listenForImageUpload() {
             let formData = new FormData();
             formData.append("image", file);
             document.getElementById("file-name").innerText = file.name;
-            const results = await fetch("https://mnist-api-74qj.onrender.com/predict-frame", {
-                method: "POST",
-                body: formData
-            });
+            let results;
+            let success = false;
+            while (!success) {
+                try {
+                    results = await fetch("https://mnist-api-74qj.onrender.com/predict-frame", {
+                        method: "POST",
+                        body: formData
+                    });
+                    success = true;
+                }
+                catch (error) {
+                    console.log("Trying again");
+                }
+            }
             const data = await results.json();
             processingPhase.style.display = "none";
             inputPhase.style.display = "flex";
@@ -61,7 +71,7 @@ async function listenForImageUpload() {
             console.log(data);
             document.getElementById("output-image").src = "data:image/jpeg;base64," + data["preprocessed-img"];
             document.getElementById("prediction").innerText = `${parseInt(data.prediction) == -1 ? "DIGIT IS UNCLEAR" : data.prediction}`;
-            document.getElementById("score").innerText = `${parseInt(data.confidence) == -1 ? "DIGIT IS UNCLEAR" : Math.round(parseFloat(data.confidence) * 10000) / 100 + "%"}`;
+            document.getElementById("score").innerText = `${parseInt(data.confidence) == -1 ? "DIGIT IS UNCLEAR" : Math.floor(parseFloat(data.confidence) * 10000) / 100 + "%"}`;
             let confidenceFloat = Math.min(1, Math.max(0, parseFloat(data.confidence)));
             let red = 255 - confidenceFloat * 255;
             let green = confidenceFloat * 255;

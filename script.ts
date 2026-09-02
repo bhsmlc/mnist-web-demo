@@ -69,10 +69,20 @@ async function listenForImageUpload() {
             let formData: FormData = new FormData();
             formData.append("image", file);
             (document.getElementById("file-name") as HTMLElement).innerText = file.name;
-            const results: Response = await fetch("https://mnist-api-74qj.onrender.com/predict-frame", {
-                method: "POST",
-                body: formData
-            });
+            let results!: Response;
+            let success: boolean = false;
+            while (!success) {
+                try {
+                    results = await fetch("https://mnist-api-74qj.onrender.com/predict-frame", {
+                        method: "POST",
+                        body: formData
+                    });
+                    success = true;
+                } catch (error) {
+                    console.log("Trying again");
+                }
+            }
+
             const data: ApiResponse = await results.json();
             processingPhase.style.display = "none";
             inputPhase.style.display = "flex";
