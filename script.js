@@ -77,6 +77,35 @@ function listenForOutputClose() {
         outputPhase.style.display = "none";
     });
 }
+function allowDrop() {
+    const dropArea = document.getElementById("image-upload");
+    const inputTag = document.getElementById("camera-input");
+    ["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
+        dropArea.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        }, false);
+    });
+    dropArea.addEventListener("dragenter", () => {
+        dropArea.classList.add("file-hover");
+    });
+    dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("file-hover");
+    });
+    dropArea.addEventListener("drop", (e) => {
+        const dt = e.dataTransfer;
+        const files = dt?.files; // ? returns undef if dt is null or undef
+        if (files && files.length > 0) {
+            const file = files[0];
+            console.log("File dropped:", file);
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            inputTag.files = dataTransfer.files;
+            const event = new CustomEvent("change", { bubbles: true });
+            inputTag.dispatchEvent(event);
+        }
+    });
+}
 listenForOutputClose();
 listenForImageUpload();
 export {};
