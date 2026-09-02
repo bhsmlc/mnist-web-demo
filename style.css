@@ -19,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    height: 100dvh;
     margin: 0;
     overflow: hidden;
 }
@@ -45,12 +46,14 @@ a {
     justify-content: center;
     align-items: center;
     gap: 5vh;
+    gap: 5dvh;
     width: 100%;
     height: 100%;
 }
 
 #title {
     margin-top: 10vh;
+    margin-top: 10dvh;
     font-size: clamp(1rem, 4vw, 2.5rem);
     color: rgba(186, 210, 255, 0.75);
     text-align: center;
@@ -107,8 +110,8 @@ a {
     justify-content: center;
     transition: background-color 0.15s, border-color 0.15s;
 }
-#image-upload:hover #image-upload.file-hover {
-    background-color: rgba(0, 81, 255, 0.18);
+#image-upload:hover, #image-upload.file-hover {
+    background-color: rgba(37, 99, 235, 0.25);
     border-color: rgba(96, 165, 250, 0.8);
     cursor: pointer;
 }
@@ -183,6 +186,7 @@ footer p a:hover::after{
     position: relative;
     width: 50vw;
     max-height: 50vh;
+    max-height: 50dvh;
     height: auto;
     filter: blur(5px);
 }
@@ -191,6 +195,7 @@ footer p a:hover::after{
     position: relative;
     width: 50vw;
     max-height: 50vh;
+    max-height: 50dvh;
     height: auto;
 }
 #file-name {
@@ -313,8 +318,10 @@ footer p a:hover::after{
     }
     #logo {
         width: 10vh;
+        width: 10dvh;
         left: 50%;
         top: 4vh;
+        top: 4dvh;
         transform: translateX(-50%);
     }
     #input-phase {
@@ -323,26 +330,31 @@ footer p a:hover::after{
         justify-content: center;
         align-items: center;
         gap: 5vh;
+        gap: 5dvh;
         width: 100%;
         height: 100%;
     }
 
     #title {
         font-size: clamp(1rem, 2.75vh, 2.5rem);
+        font-size: clamp(1rem, 2.75dvh, 2.5rem);
     }
     #main {
         flex-direction: column;
         gap: 3vh;
+        gap: 3dvh;
     }
 
     #image-upload {
         width: clamp(150px, 80vw, 450px);
         height: clamp(150px, 30vh, 450px);
+        height: clamp(150px, 30dvh, 450px);
     }
 
     #guide-container {
         width: 75vw; 
         gap: 1vh;
+        gap: 1dvh;
     }
 
     footer {
