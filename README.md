@@ -43,3 +43,5 @@ Please do not attempt to flood the site or spam requests. Thank you!
 - Typescript
 - Html
 - CSS
+
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/155c3aee-9627-475a-9fa0-0c71bee59fe7" />
