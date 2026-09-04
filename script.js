@@ -30,6 +30,15 @@ let currentPhase = "input";
 //     alert(data);
 //     (document.getElementById("ya") as HTMLElement).innerText = JSON.stringify(data);
 // }
+function getScale(initial) {
+    let scale = initial;
+    scale -= 50;
+    scale /= 50;
+    let normal = 1.5;
+    let maxChange = 1;
+    let calculatedScale = normal + maxChange * scale;
+    return calculatedScale;
+}
 async function listenForImageUpload() {
     const inputTag = document.getElementById("camera-input");
     const loadingImage = document.getElementById("processing-image");
@@ -52,6 +61,11 @@ async function listenForImageUpload() {
             document.getElementById("file-name").innerText = file.name;
             let results;
             let success = false;
+            let inverted = localStorage.getItem("inverted") === "true";
+            let scale = parseInt(localStorage.getItem("scale"));
+            let calculatedScale = getScale(scale);
+            formData.append("inverted", inverted.toString());
+            formData.append("scale", calculatedScale.toString());
             while (!success) {
                 try {
                     results = await fetch("https://mnist-67a9fvpwq-ashwath-arasuraj-sankars-projects.vercel.app/predict-frame", {
@@ -61,6 +75,7 @@ async function listenForImageUpload() {
                     success = true;
                 }
                 catch (error) {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                     console.log("Trying again");
                 }
             }
@@ -116,6 +131,42 @@ function allowDrop() {
         }
     });
 }
+function settingsMenu() {
+    const settingsIcon = document.getElementById("setting-icon");
+    const settingsMenu = document.getElementById("settings-menu");
+    const invertedCheckbox = document.getElementById("inverted");
+    const scaleSlider = document.getElementById("scale");
+    const switchCircle = document.getElementById("switch-circle");
+    const scaleVal = document.getElementById("scale-val");
+    if (localStorage.getItem("inverted") == null) {
+        localStorage.setItem("inverted", "false");
+    }
+    let invertedCache = localStorage.getItem("inverted") === "true";
+    if (localStorage.getItem("scale") == null) {
+        localStorage.setItem("scale", "50");
+    }
+    let scaleCache = parseInt(localStorage.getItem("scale"));
+    invertedCheckbox.checked = invertedCache;
+    scaleSlider.value = scaleCache.toString();
+    if (invertedCache) {
+        switchCircle.classList.add("checked");
+    }
+    scaleVal.innerText = (Math.floor(getScale(scaleCache) * 100) / 100).toString();
+    settingsIcon.addEventListener("click", () => {
+        settingsMenu.classList.toggle("show");
+    });
+    invertedCheckbox.addEventListener("change", () => {
+        const isInverted = invertedCheckbox.checked;
+        localStorage.setItem("inverted", isInverted.toString());
+        switchCircle.classList.toggle("checked");
+    });
+    scaleSlider.addEventListener("input", () => {
+        const scaleValue = parseInt(scaleSlider.value);
+        localStorage.setItem("scale", scaleValue.toString());
+        scaleVal.innerText = (Math.floor(getScale(scaleValue) * 100) / 100).toString();
+    });
+}
+settingsMenu();
 allowDrop();
 listenForOutputClose();
 listenForImageUpload();

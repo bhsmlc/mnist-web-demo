@@ -14,6 +14,9 @@
                 <img id="logo" src="club-logo.svg" alt="BHS ML Club Logo">
             </a>
             <h1 id="title">BHS ML Club - MNIST Web Demo</h1>
+            <svg id="setting-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M19.44 12.99l-.01-.02c.04-.33.07-.66.07-1s-.03-.67-.06-1l.01-.02 2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1a9.86 9.86 0 0 0-1.74-1l-.37-2.65c-.03-.25-.24-.43-.49-.43h-4c-.25 0-.46.18-.49.43l-.38 2.65c-.61.25-1.2.59-1.74 1l-2.49-1c-.23-.09-.49 0-.62.22l-2 3.46c-.12.22-.07.49.12.64l2.11 1.65.01.02c-.04.33-.07.66-.07 1s.03.67.06 1l-.01.02-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.53.4 1.13.74 1.74 1l.37 2.65c.04.24.25.42.49.42h4c.25 0 .46-.18.49-.43l.38-2.65c.61-.25 1.2-.59 1.74-1l2.49 1c.23.09.49 0 .62-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+            </svg>
             <div id="main">
                 <label for="camera-input" id="image-upload">
                     <svg id="camera-icon" viewBox="0 0 64 64" width=80 height=80 fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,6 +78,12 @@
                     </svg>
                 <p><a href="https://bhsmlc.github.io/" target="_blank">Our Website</a></p>
             </footer>
+            <div id="settings-menu">
+                <input id="inverted" type="checkbox">
+                <label for="inverted"><span id="switch"><span id="switch-circle"></span></span></label>
+                <input id="scale" type="range">
+                <p id="scale-val"></p>
+            </div>
         </div>
         <div id="processing-phase">
             <div id="processing-image-container">

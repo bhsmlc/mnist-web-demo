@@ -49,6 +49,16 @@ let currentPhase: string = "input";
 //     (document.getElementById("ya") as HTMLElement).innerText = JSON.stringify(data);
 // }
 
+function getScale(initial: number) {
+    let scale = initial;
+    scale -= 50;
+    scale /= 50;
+    let normal: number = 1.5;
+    let maxChange: number = 1;
+    let calculatedScale = normal + maxChange * scale;
+    return calculatedScale;
+}
+
 async function listenForImageUpload() {
     const inputTag: HTMLInputElement = document.getElementById("camera-input") as HTMLInputElement;
     const loadingImage: HTMLImageElement = document.getElementById("processing-image") as HTMLImageElement;
@@ -71,6 +81,14 @@ async function listenForImageUpload() {
             (document.getElementById("file-name") as HTMLElement).innerText = file.name;
             let results!: Response;
             let success: boolean = false;
+
+            let inverted: boolean = localStorage.getItem("inverted") === "true";
+            let scale: number = parseInt(localStorage.getItem("scale") as string);
+            
+            let calculatedScale = getScale(scale);
+            formData.append("inverted", inverted.toString());
+            formData.append("scale", calculatedScale.toString());
+
             while (!success) {
                 try {
                     results = await fetch("https://mnist-67a9fvpwq-ashwath-arasuraj-sankars-projects.vercel.app/predict-frame", {//https://mnist-api-74qj.onrender.com/predict-frame", {
@@ -79,6 +97,7 @@ async function listenForImageUpload() {
                     });
                     success = true;
                 } catch (error) {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                     console.log("Trying again");
                 }
             }
@@ -141,7 +160,54 @@ function allowDrop() {
         }
     });
 }
+function settingsMenu() {
+    const settingsIcon: HTMLElement = document.getElementById("setting-icon") as HTMLElement;
+    const settingsMenu: HTMLDivElement = document.getElementById("settings-menu") as HTMLDivElement;
+    const invertedCheckbox: HTMLInputElement = document.getElementById("inverted") as HTMLInputElement;
+    const scaleSlider: HTMLInputElement = document.getElementById("scale") as HTMLInputElement;
+    const switchCircle: HTMLElement = document.getElementById("switch-circle") as HTMLElement;
+    const scaleVal: HTMLElement = document.getElementById("scale-val") as HTMLElement;
 
+    if (localStorage.getItem("inverted") == null) {
+        localStorage.setItem("inverted", "false");
+    }
+
+    let invertedCache: boolean = localStorage.getItem("inverted") === "true";
+    
+
+    if (localStorage.getItem("scale") == null) {
+        localStorage.setItem("scale", "50");
+    }
+    let scaleCache: number = parseInt(localStorage.getItem("scale") as string);
+
+    invertedCheckbox.checked = invertedCache;
+    scaleSlider.value = scaleCache.toString();
+
+    if (invertedCache) {
+        switchCircle.classList.add("checked");
+    }
+
+    scaleVal.innerText = (Math.floor(getScale(scaleCache) * 100) / 100).toString();
+
+    settingsIcon.addEventListener("click", () => {
+        settingsMenu.classList.toggle("show");
+    });
+
+    invertedCheckbox.addEventListener("change", () => {
+        const isInverted: boolean = invertedCheckbox.checked;
+        localStorage.setItem("inverted", isInverted.toString());
+        switchCircle.classList.toggle("checked");
+    });
+
+    scaleSlider.addEventListener("input", () => {
+        const scaleValue: number = parseInt(scaleSlider.value);
+        localStorage.setItem("scale", scaleValue.toString());
+        scaleVal.innerText = (Math.floor(getScale(scaleValue) * 100) / 100).toString();
+    });
+}
+
+
+settingsMenu();
 allowDrop();
 listenForOutputClose();
 listenForImageUpload();
