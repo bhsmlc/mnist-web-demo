@@ -72,7 +72,7 @@ a {
     margin-top: 10vh;
     margin-top: 10dvh;
     font-size: clamp(1rem, 4vw, 2.5rem);
-    color: color-mix(in srgb, var(--primary-color) 75%, transparent);
+    color: var(--primary-color);
     text-align: center;
 }
 #main {
@@ -95,7 +95,7 @@ a {
 }
 
 .guide-title {
-    color: color-mix(in srgb, var(--primary-light) 60%, transparent);
+    color: var(--primary-light);
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -105,7 +105,7 @@ a {
 }
 
 .guide-step-desc {
-    color: color-mix(in srgb, var(--primary-color) 75%, transparent);
+    color: var(--primary-color);
     font-size: 13px;
     font-family: system-ui, sans-serif;
     line-height: 1.4;
@@ -153,7 +153,7 @@ footer {
     justify-content: center;
     gap: 10vw;  
     background-color: color-mix(in srgb, var(--background-color) 80%, transparent);
-    color: color-mix(in srgb, var(--primary-color) 75%, transparent);
+    color: var(--primary-color);
 }
 
 footer p a {
@@ -171,7 +171,7 @@ footer p a::after {
     display: inline-block;
     width: 50px;
     height: 2px;
-    background-color: color-mix(in srgb, var(--primary-color) 75%, transparent);
+    background-color: var(--primary-color);
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -259,11 +259,11 @@ footer p a:hover::after{
     min-width: 0;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    border: 2px solid color-mix(in srgb, var(--primary-color) 75%, transparent);
+    border: 2px solid var(--primary-color);
 }
 
 #divider {
-    background-color: color-mix(in srgb, var(--primary-color) 75%, transparent);
+    background-color: var(--primary-color) 75%;
     height: 90%;
     min-width: 2px;
     margin: 0 10px;
@@ -275,7 +275,7 @@ footer p a:hover::after{
     height: 90%;
     flex-basis: 0;
     flex-grow: 1;
-    color: color-mix(in srgb, var(--primary-color) 75%, transparent);
+    color: var(--primary-color);
     font-size: 1rem;
     min-width: 0;
 }
