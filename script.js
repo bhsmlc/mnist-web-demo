@@ -68,7 +68,7 @@ async function listenForImageUpload() {
             formData.append("scale", calculatedScale.toString());
             while (!success) {
                 try {
-                    results = await fetch("https://mnist-67a9fvpwq-ashwath-arasuraj-sankars-projects.vercel.app/predict-frame", {
+                    results = await fetch("https://mnist-api-nine.vercel.app/predict-frame", {
                         method: "POST",
                         body: formData
                     });

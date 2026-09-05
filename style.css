@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @property --gradient-num {
     syntax: "<number>";
     inherits: false;
@@ -39,6 +41,7 @@ body {
     height: 100dvh;
     margin: 0;
     overflow: hidden;
+    font-family: "Inter", sans-serif;
 }
 a {
     text-decoration: none;
@@ -86,7 +89,7 @@ a {
 }
 .guide-step {
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: 12px;
     background: color-mix(in srgb, var(--secondary-color) 6%, transparent);
     border: 1px solid color-mix(in srgb, var(--secondary-color) 18%, transparent);

@@ -91,7 +91,7 @@ async function listenForImageUpload() {
 
             while (!success) {
                 try {
-                    results = await fetch("https://mnist-67a9fvpwq-ashwath-arasuraj-sankars-projects.vercel.app/predict-frame", {//https://mnist-api-74qj.onrender.com/predict-frame", {
+                    results = await fetch("https://mnist-api-nine.vercel.app/predict-frame", {//https://mnist-api-74qj.onrender.com/predict-frame", {
                         method: "POST",
                         body: formData
                     });
