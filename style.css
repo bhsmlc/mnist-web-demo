@@ -172,7 +172,7 @@ footer p a:hover {
 footer p a::after {
     content: "";
     display: inline-block;
-    width: 30px;
+    width: 0px;
     height: 5px;
     background-color: var(--primary-color);
     position: absolute;
