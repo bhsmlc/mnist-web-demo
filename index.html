@@ -40,7 +40,7 @@
                             <circle cx="12" cy="13" r="3.5" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
                         </svg>
                         <span class="guide-step-desc">
-                        Pick a clear dark digit on a light background
+                        Pick a clear dark digit on a light background (or vice versa if using inverted setting)
                         </span>
                     </div>
 
@@ -80,9 +80,18 @@
             </footer>
             <div id="settings-menu">
                 <input id="inverted" type="checkbox">
-                <label for="inverted"><span id="switch"><span id="switch-circle"></span></span></label>
-                <input id="scale" type="range">
-                <p id="scale-val"></p>
+                <div id="inverted-container">
+                    <p>Inverted</p>
+                    <label for="inverted"><span id="switch"><span id="switch-circle"></span></span></label>
+                </div>
+                <div id="scale-container">
+                    <p id="thresh-label">Threshold Scale</p>
+                    <div id="scale-input">
+                        <input id="scale" type="range">
+                        <p id="scale-val"></p>
+                    </div>
+                </div>
+                <button id="reset-button">Reset</button>
             </div>
         </div>
         <div id="processing-phase">

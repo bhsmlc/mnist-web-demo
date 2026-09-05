@@ -169,11 +169,12 @@ footer p a:hover {
 footer p a::after {
     content: "";
     display: inline-block;
-    width: 50px;
-    height: 2px;
+    width: 30px;
+    height: 5px;
     background-color: var(--primary-color);
     position: absolute;
-    bottom: 0;
+    bottom: -20%;
+    border-radius: 2000px;
     left: 50%;
     transform: translateX(-50%);
     transition: width 0.15s, background-color 0.15s;
@@ -181,7 +182,7 @@ footer p a::after {
 
 footer p a:hover::after{
     background-color: color-mix(in srgb, var(--secondary-hover) 80%, transparent);
-    width: 60px;
+    width: 45px;
 }
 
 .dot {
@@ -330,7 +331,7 @@ footer p a:hover::after{
 }
 
 #setting-icon {
-    width: 10vw;
+    width: clamp(10px, 10vw, 60px);
     position: fixed;
     top: 10px;
     right: 10px;
@@ -344,10 +345,11 @@ footer p a:hover::after{
 }
 #switch {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     width: 50px;
     height: 24px;
-    background-color: var(--secondary-color);
+    background-color: white;
     border-radius: 12px;
     transition: background-color 0.2s ease-in-out;
 }
@@ -357,22 +359,26 @@ footer p a:hover::after{
     left: 2px;
     width: 20px;
     height: 20px;
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
     border-radius: 50%;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 #switch-circle.checked {
     transform: translateX(26px);
+    background-color: var(--primary-color);;
+}
+body:has(#switch-circle.checked) #switch {
+    background-color: var(--secondary-color);
 }
 #settings-menu {
     position: fixed;
-    top: 11vw;
+    top: clamp(15px, 13vw, 75px);
     right: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20vw;
-    height: 20vh;
+    width: clamp(160px, 20vw, 200px);
+    height: clamp(200px, 20vh, 400px);
     gap: 10px;
     padding: 10px;
     background-color: color-mix(in srgb, var(--background-color) 80%, transparent);
@@ -386,6 +392,60 @@ footer p a:hover::after{
 
 body:has(#settings-menu.show) #setting-icon {
     transform: rotateZ(20deg);
+}
+
+#scale-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+#scale-container #thresh-label {
+    text-align: center;
+    border-bottom: 1px solid var(--primary-color);
+    width: 100%;
+}
+
+#inverted-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+#inverted-container p {
+    display: inline-block;
+    text-align: center;
+    border-bottom: 1px solid var(--primary-color);
+    width: 100%;
+}
+
+#scale-input {
+    width: 100%;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+#scale {
+    width: 90%;
+}
+
+#reset-button {
+    width: 50%;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 5px;
+    margin: 10px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+#reset-button:hover {
+    background-color: var(--secondary-hover);
 }
 
 @media (max-width: 700px) {

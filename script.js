@@ -138,6 +138,7 @@ function settingsMenu() {
     const scaleSlider = document.getElementById("scale");
     const switchCircle = document.getElementById("switch-circle");
     const scaleVal = document.getElementById("scale-val");
+    const resetButton = document.getElementById("reset-button");
     if (localStorage.getItem("inverted") == null) {
         localStorage.setItem("inverted", "false");
     }
@@ -164,6 +165,14 @@ function settingsMenu() {
         const scaleValue = parseInt(scaleSlider.value);
         localStorage.setItem("scale", scaleValue.toString());
         scaleVal.innerText = (Math.floor(getScale(scaleValue) * 100) / 100).toString();
+    });
+    resetButton.addEventListener("click", () => {
+        localStorage.setItem("inverted", "false");
+        localStorage.setItem("scale", "50");
+        invertedCheckbox.checked = false;
+        scaleSlider.value = "50";
+        switchCircle.classList.remove("checked");
+        scaleVal.innerText = (Math.floor(getScale(50) * 100) / 100).toString();
     });
 }
 settingsMenu();
