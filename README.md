@@ -8,7 +8,7 @@ Created by Ash-ioL :)
 
 https://github.com/bhsmlc/mnist-api
 
-Proudly hosted on Render :D
+Proudly hosted on Vercel :D
 
 ### AI Usage Declaration
 
