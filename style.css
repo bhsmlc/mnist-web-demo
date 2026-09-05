@@ -155,7 +155,7 @@ footer {
     width: 100%;
     justify-content: center;
     gap: 10vw;  
-    background-color: color-mix(in srgb, var(--background-color) 80%, transparent);
+    background-color: var(--background-color);
     color: var(--primary-color);
 }
 
