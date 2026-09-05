@@ -8,7 +8,7 @@ Created by Ash-ioL :)
 
 https://github.com/bhsmlc/mnist-api
 
-Proudly hosted on Render :D
+Proudly hosted on Vercel :D
 
 ### AI Usage Declaration
 
@@ -43,3 +43,6 @@ Please do not attempt to flood the site or spam requests. Thank you!
 - Typescript
 - Html
 - CSS
+
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/1fb0cc34-3af9-4f48-97b0-4b7bf812e196" />
+
